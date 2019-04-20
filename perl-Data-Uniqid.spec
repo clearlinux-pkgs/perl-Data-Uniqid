@@ -4,11 +4,11 @@
 #
 Name     : perl-Data-Uniqid
 Version  : 0.12
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libd/libdata-uniqid-perl/libdata-uniqid-perl_0.12-1.debian.tar.xz
-Summary  : No detailed summary available
+Summary  : Perl extension for simple generation of unique IDs
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-Data-Uniqid-license = %{version}-%{release}
@@ -24,6 +24,7 @@ These ids are coded with a Base62 systen to make them short and handy
 Summary: dev components for the perl-Data-Uniqid package.
 Group: Development
 Provides: perl-Data-Uniqid-devel = %{version}-%{release}
+Requires: perl-Data-Uniqid = %{version}-%{release}
 
 %description dev
 dev components for the perl-Data-Uniqid package.
@@ -42,7 +43,7 @@ license components for the perl-Data-Uniqid package.
 cd ..
 %setup -q -T -D -n Data-Uniqid-0.12 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Data-Uniqid-0.12/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Data-Uniqid-0.12/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
