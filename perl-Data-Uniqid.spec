@@ -4,14 +4,15 @@
 #
 Name     : perl-Data-Uniqid
 Version  : 0.12
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libd/libdata-uniqid-perl/libdata-uniqid-perl_0.12-1.debian.tar.xz
-Summary  : Perl extension for simple generation of unique IDs
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-Data-Uniqid-license = %{version}-%{release}
+Requires: perl-Data-Uniqid-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -38,18 +39,28 @@ Group: Default
 license components for the perl-Data-Uniqid package.
 
 
+%package perl
+Summary: perl components for the perl-Data-Uniqid package.
+Group: Default
+Requires: perl-Data-Uniqid = %{version}-%{release}
+
+%description perl
+perl components for the perl-Data-Uniqid package.
+
+
 %prep
 %setup -q -n Data-Uniqid-0.12
-cd ..
-%setup -q -T -D -n Data-Uniqid-0.12 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libdata-uniqid-perl_0.12-1.debian.tar.xz
+cd %{_builddir}/Data-Uniqid-0.12
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Data-Uniqid-0.12/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Data-Uniqid-0.12/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -59,7 +70,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -68,7 +79,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Data-Uniqid
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Data-Uniqid/deblicense_copyright
+cp %{_builddir}/Data-Uniqid-0.12/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Data-Uniqid/4bd9ea40fd8cfbb3b81112e5e86007d83ceb1b00
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -81,8 +92,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Data/Uniqid.pm
-/usr/lib/perl5/vendor_perl/5.28.2/auto/Data/Uniqid/autosplit.ix
 
 %files dev
 %defattr(-,root,root,-)
@@ -90,4 +99,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Data-Uniqid/deblicense_copyright
+/usr/share/package-licenses/perl-Data-Uniqid/4bd9ea40fd8cfbb3b81112e5e86007d83ceb1b00
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Data/Uniqid.pm
+/usr/lib/perl5/vendor_perl/5.30.1/auto/Data/Uniqid/autosplit.ix
