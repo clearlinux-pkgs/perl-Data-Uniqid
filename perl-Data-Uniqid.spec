@@ -4,7 +4,7 @@
 #
 Name     : perl-Data-Uniqid
 Version  : 0.12
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libd/libdata-uniqid-perl/libdata-uniqid-perl_0.12-1.debian.tar.xz
@@ -79,7 +79,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Data-Uniqid
-cp %{_builddir}/Data-Uniqid-0.12/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Data-Uniqid/4bd9ea40fd8cfbb3b81112e5e86007d83ceb1b00
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Data-Uniqid/4bd9ea40fd8cfbb3b81112e5e86007d83ceb1b00
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -103,5 +103,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Data/Uniqid.pm
-/usr/lib/perl5/vendor_perl/5.30.1/auto/Data/Uniqid/autosplit.ix
+/usr/lib/perl5/vendor_perl/5.30.2/Data/Uniqid.pm
+/usr/lib/perl5/vendor_perl/5.30.2/auto/Data/Uniqid/autosplit.ix
