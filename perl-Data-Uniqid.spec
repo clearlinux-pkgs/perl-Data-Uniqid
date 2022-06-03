@@ -4,7 +4,7 @@
 #
 Name     : perl-Data-Uniqid
 Version  : 0.12
-Release  : 23
+Release  : 24
 URL      : https://cpan.metacpan.org/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libd/libdata-uniqid-perl/libdata-uniqid-perl_0.12-1.debian.tar.xz
@@ -103,5 +103,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Data/Uniqid.pm
-/usr/lib/perl5/vendor_perl/5.34.0/auto/Data/Uniqid/autosplit.ix
+/usr/lib/perl5/*
