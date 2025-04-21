@@ -7,7 +7,7 @@
 #
 Name     : perl-Data-Uniqid
 Version  : 0.12
-Release  : 31
+Release  : 32
 URL      : https://cpan.metacpan.org/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libd/libdata-uniqid-perl/libdata-uniqid-perl_0.12-1.debian.tar.xz
